@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLOSET.OS – Your AI Wardrobe Operating System</title>
+    <meta name="description" content="Five AI agents collaborate to digitize your wardrobe, style you daily, and reduce fashion waste. Built on Complete.dev.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span class="toast-icon">✓</span>
+        <span class="toast-msg" id="toast-msg"></span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <span class="logo-text">CLOSET.<span class="os">OS</span></span>
+            </div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#how-it-works" class="nav-link">How It Works</a></li>
+                <li><a href="#demo" class="nav-link">Try It Live</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#pricing" class="nav-link">Pricing</a></li>
+                <li><a href="#waitlist" class="btn btn-primary nav-cta">Join Waitlist</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Nav Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <div class="drawer-inner">
+            <button class="drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+            <ul>
+                <li><a href="#how-it-works" class="drawer-link">How It Works</a></li>
+                <li><a href="#features" class="drawer-link">Features</a></li>
+                <li><a href="#faq" class="drawer-link">FAQ</a></li>
+                <li><a href="#pricing" class="drawer-link">Pricing</a></li>
+                <li><a href="#waitlist" class="btn btn-primary drawer-cta">Join Waitlist →</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <!-- Animated floating background elements -->
+        <div class="hero-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+        </div>
+        <div class="floating-items" aria-hidden="true">
+            <span class="float-item fi-1">👗</span>
+            <span class="float-item fi-2">👟</span>
+            <span class="float-item fi-3">🧥</span>
+            <span class="float-item fi-4">👜</span>
+            <span class="float-item fi-5">🧣</span>
+            <span class="float-item fi-6">👒</span>
+            <span class="float-item fi-7">🩱</span>
+            <span class="float-item fi-8">🥾</span>
+        </div>
+        <div class="container hero-container">
+            <div class="hero-content reveal">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Built on <strong>Complete.dev</strong>
+                </div>
+                <h1>Your wardrobe,<br><span class="gradient-text">superintelligent.</span></h1>
+                <p class="hero-subtitle">Five AI agents work together to digitize your clothes, style you for any occasion, and help you love what you already own.</p>
+                <div class="hero-cta">
+                    <a href="#waitlist" class="btn btn-large btn-primary btn-glow">Get Early Access →</a>
+                    <a href="#how-it-works" class="btn btn-large btn-outline">Meet the Agents</a>
+                </div>
+                <div class="hero-social-proof">
+                    <div class="avatars">
+                        <span class="avatar" style="background:#f43f5e;">S</span>
+                        <span class="avatar" style="background:#8b5cf6;">M</span>
+                        <span class="avatar" style="background:#06b6d4;">E</span>
+                        <span class="avatar" style="background:#f59e0b;">J</span>
+                        <span class="avatar" style="background:#10b981;">+</span>
+                    </div>
+                    <p><strong>12,400+</strong> people already on the waitlist</p>
+                </div>
+            </div>
+            <div class="hero-image reveal reveal-right">
+                <!-- CSS App Mockup -->
+                <div class="app-mockup">
+                    <div class="mockup-phone">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="screen-header">
+                                <div class="screen-greeting">Good morning ☀️</div>
+                                <div class="screen-subtitle">3 outfits ready · 22°C · Client meeting 10am</div>
+                            </div>
+                            <div class="outfit-card mockup-outfit-card" id="mockup-outfit-card">
+                                <div class="outfit-items" id="mockup-outfit-items">
+                                    <div class="outfit-piece" style="background:linear-gradient(135deg,#6366f1,#8b5cf6);">👔</div>
+                                    <div class="outfit-piece" style="background:linear-gradient(135deg,#1e293b,#334155);">👖</div>
+                                    <div class="outfit-piece" style="background:linear-gradient(135deg,#f59e0b,#f97316);">👟</div>
+                                </div>
+                                <div class="outfit-label" id="mockup-outfit-label">Business Casual · 22°C · Client Meeting</div>
+                                <div class="outfit-dots" id="outfit-dots">
+                                    <span class="odot active"></span>
+                                    <span class="odot"></span>
+                                    <span class="odot"></span>
+                                </div>
+                            </div>
+                            <div class="screen-agents">
+                                <div class="agent-pill active">👁 Vision</div>
+                                <div class="agent-pill active">🎨 Stylist</div>
+                                <div class="agent-pill active">🌤 Weather</div>
+                                <div class="agent-pill active">🛍 Gap</div>
+                                <div class="agent-pill active">🌱 Eco</div>
+                            </div>
+                            <div class="screen-stats">
+                                <div class="stat-chip">
+                                    <span class="stat-num" id="mockup-items">63</span>
+                                    <span class="stat-lbl">items</span>
+                                </div>
+                                <div class="stat-chip">
+                                    <span class="stat-num">3</span>
+                                    <span class="stat-lbl">outfits</span>
+                                </div>
+                                <div class="stat-chip">
+                                    <span class="stat-num">A+</span>
+                                    <span class="stat-lbl">eco score</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mockup-glow"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="container stats-container">
+            <div class="stat-item reveal">
+                <span class="stat-value" data-count="12400">0</span><span class="stat-value-suffix">+</span>
+                <span class="stat-desc">Waitlist members</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item reveal">
+                <span class="stat-value" data-count="2100000">0</span><span class="stat-value-suffix">+</span>
+                <span class="stat-desc">Items digitized in beta</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item reveal">
+                <span class="stat-value" data-count="5">0</span><span class="stat-value-suffix"> agents</span>
+                <span class="stat-desc">Collaborating in real time</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item reveal">
+                <span class="stat-value" data-count="43">0</span><span class="stat-value-suffix">%</span>
+                <span class="stat-desc">Avg wardrobe wear-rate increase</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agent Team Section -->
+    <section id="how-it-works" class="agents">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">The Team</span>
+                <h2>Meet your personal <span class="gradient-text">AI styling team</span></h2>
+                <p>Five specialized agents collaborate in real time—just like a human team, but faster and always learning.</p>
+            </div>
+            <div class="agent-grid">
+                <div class="agent-card reveal" data-agent="vision">
+                    <div class="agent-icon-wrap" style="--agent-color: #6366f1;">
+                        <span class="agent-emoji">👁️</span>
+                    </div>
+                    <h3>Garment Vision</h3>
+                    <p>Identifies category, color, pattern, fabric & style from a single photo in under 1 second. Zero manual entry—ever.</p>
+                    <div class="agent-badge">CLIP + custom fine-tuned classifier</div>
+                </div>
+                <div class="agent-card reveal" data-agent="stylist">
+                    <div class="agent-icon-wrap" style="--agent-color: #ec4899;">
+                        <span class="agent-emoji">🎨</span>
+                    </div>
+                    <h3>Stylist</h3>
+                    <p>Fuses your wardrobe data, real-time weather, and calendar events into 3 personalized outfit options—with a style note for each.</p>
+                    <div class="agent-badge">GPT-4o + wardrobe context fusion</div>
+                </div>
+                <div class="agent-card reveal" data-agent="weather">
+                    <div class="agent-icon-wrap" style="--agent-color: #0ea5e9;">
+                        <span class="agent-emoji">🌤️</span>
+                    </div>
+                    <h3>Weather & Calendar</h3>
+                    <p>Fetches live 48-hour forecasts and reads your calendar so outfits are always right for the moment—rain, meetings, or dinner dates.</p>
+                    <div class="agent-badge">OpenWeatherMap + Google Calendar API</div>
+                </div>
+                <div class="agent-card reveal" data-agent="gap">
+                    <div class="agent-icon-wrap" style="--agent-color: #f59e0b;">
+                        <span class="agent-emoji">🛍️</span>
+                    </div>
+                    <h3>Gap Analyst</h3>
+                    <p>Compares your wardrobe against a capsule essentials model to surface exactly what's missing—then finds the best-value option to buy.</p>
+                    <div class="agent-badge">Rules engine + Shopify / ASOS APIs</div>
+                </div>
+                <div class="agent-card reveal" data-agent="sustainability">
+                    <div class="agent-icon-wrap" style="--agent-color: #10b981;">
+                        <span class="agent-emoji">🌱</span>
+                    </div>
+                    <h3>Sustainability</h3>
+                    <p>Logs every wear, calculates CO₂ footprint per garment, and nudges you when items are underused—so you shop intentionally, not impulsively.</p>
+                    <div class="agent-badge">Impact analytics + lifecycle model</div>
+                </div>
+            </div>
+            <div class="agent-note reveal">
+                <div class="note-icon">🔗</div>
+                <p>All agents share memory and context inside <strong>Complete.dev</strong>'s workspace—they learn from each other and improve every day.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Flow -->
+    <section class="workflow">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">The Process</span>
+                <h2>From photo to outfit in <span class="gradient-text">seconds</span></h2>
+            </div>
+            <div class="flow-steps">
+                <div class="step reveal">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">📸</div>
+                    <h3>Snap a photo</h3>
+                    <p>Take a picture of any clothing item. Garment Vision Agent tags it instantly.</p>
+                </div>
+                <div class="step-connector reveal">
+                    <div class="connector-line"></div>
+                    <div class="connector-arrow">›</div>
+                </div>
+                <div class="step reveal">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">🌤️</div>
+                    <h3>Context is added</h3>
+                    <p>Weather & Calendar Agent fetch tomorrow's forecast and your events.</p>
+                </div>
+                <div class="step-connector reveal">
+                    <div class="connector-line"></div>
+                    <div class="connector-arrow">›</div>
+                </div>
+                <div class="step reveal">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">🎨</div>
+                    <h3>Stylist creates outfits</h3>
+                    <p>Your wardrobe + context = 3 personalized outfit options.</p>
+                </div>
+                <div class="step-connector reveal">
+                    <div class="connector-line"></div>
+                    <div class="connector-arrow">›</div>
+                </div>
+                <div class="step reveal">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">🌱</div>
+                    <h3>Gap & sustainability</h3>
+                    <p>Agents identify missing items and track wear—shop smarter, waste less.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Agent Demo -->
+    <section id="demo" class="agent-demo">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Live Demo</span>
+                <h2>Watch the agents <span class="gradient-text">collaborate live</span></h2>
+                <p>Pick any garment below and watch all five agents analyze, contextualize, and style it in real time—powered by Complete.dev's shared workspace.</p>
+            </div>
+
+            <div class="demo-stage reveal">
+
+                <!-- ① Garment Picker -->
+                <div class="demo-col demo-col-picker">
+                    <p class="demo-col-label"><span class="demo-step-num">①</span> Pick a garment</p>
+                    <div class="garment-grid" id="garment-grid">
+                        <button class="garment-btn" data-emoji="👔" data-type="Dress Shirt" data-color="White" data-pattern="Solid" data-fabric="100% Cotton" data-style="Formal">
+                            <span class="garment-emoji">👔</span>
+                            <span class="garment-name">Dress Shirt</span>
+                        </button>
+                        <button class="garment-btn" data-emoji="👗" data-type="Midi Dress" data-color="Multi-floral" data-pattern="Floral print" data-fabric="Chiffon" data-style="Casual">
+                            <span class="garment-emoji">👗</span>
+                            <span class="garment-name">Midi Dress</span>
+                        </button>
+                        <button class="garment-btn" data-emoji="🧥" data-type="Trench Coat" data-color="Beige" data-pattern="Solid" data-fabric="Cotton blend" data-style="Smart casual">
+                            <span class="garment-emoji">🧥</span>
+                            <span class="garment-name">Trench Coat</span>
+                        </button>
+                        <button class="garment-btn" data-emoji="👖" data-type="Slim Jeans" data-color="Indigo" data-pattern="Solid" data-fabric="98% Denim" data-style="Casual">
+                            <span class="garment-emoji">👖</span>
+                            <span class="garment-name">Slim Jeans</span>
+                        </button>
+                        <button class="garment-btn" data-emoji="👟" data-type="Low-top Sneakers" data-color="White" data-pattern="Solid" data-fabric="Leather" data-style="Casual–smart">
+                            <span class="garment-emoji">👟</span>
+                            <span class="garment-name">Sneakers</span>
+                        </button>
+                        <button class="garment-btn" data-emoji="👜" data-type="Tote Bag" data-color="Tan brown" data-pattern="Solid" data-fabric="Full-grain leather" data-style="Business">
+                            <span class="garment-emoji">👜</span>
+                            <span class="garment-name">Leather Bag</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ② Agent Pipeline -->
+                <div class="demo-col demo-col-pipeline">
+                    <p class="demo-col-label"><span class="demo-step-num">②</span> Agents processing</p>
+                    <div class="pipeline-agents" id="pipeline-agents">
+                        <div class="pipeline-agent" data-agent="vision">
+                            <div class="pa-header">
+                                <span class="pa-icon">👁️</span>
+                                <div class="pa-meta">
+                                    <span class="pa-name">Garment Vision</span>
+                                    <span class="pa-tech">CLIP + custom classifier</span>
+                                </div>
+                                <span class="pa-status" data-status="idle">Idle</span>
+                            </div>
+                            <div class="pa-output" id="pa-output-vision"></div>
+                            <div class="pa-progress"><div class="pa-bar" id="pa-bar-vision"></div></div>
+                        </div>
+                        <div class="pipeline-agent" data-agent="weather">
+                            <div class="pa-header">
+                                <span class="pa-icon">🌤️</span>
+                                <div class="pa-meta">
+                                    <span class="pa-name">Weather &amp; Calendar</span>
+                                    <span class="pa-tech">OpenWeatherMap + Google Calendar</span>
+                                </div>
+                                <span class="pa-status" data-status="idle">Idle</span>
+                            </div>
+                            <div class="pa-output" id="pa-output-weather"></div>
+                            <div class="pa-progress"><div class="pa-bar" id="pa-bar-weather"></div></div>
+                        </div>
+                        <div class="pipeline-agent" data-agent="stylist">
+                            <div class="pa-header">
+                                <span class="pa-icon">🎨</span>
+                                <div class="pa-meta">
+                                    <span class="pa-name">Stylist</span>
+                                    <span class="pa-tech">GPT-4 + context fusion</span>
+                                </div>
+                                <span class="pa-status" data-status="idle">Idle</span>
+                            </div>
+                            <div class="pa-output" id="pa-output-stylist"></div>
+                            <div class="pa-progress"><div class="pa-bar" id="pa-bar-stylist"></div></div>
+                        </div>
+                        <div class="pipeline-agent" data-agent="gap">
+                            <div class="pa-header">
+                                <span class="pa-icon">🛍️</span>
+                                <div class="pa-meta">
+                                    <span class="pa-name">Gap Analyst</span>
+                                    <span class="pa-tech">Rules engine + shopping APIs</span>
+                                </div>
+                                <span class="pa-status" data-status="idle">Idle</span>
+                            </div>
+                            <div class="pa-output" id="pa-output-gap"></div>
+                            <div class="pa-progress"><div class="pa-bar" id="pa-bar-gap"></div></div>
+                        </div>
+                        <div class="pipeline-agent" data-agent="sustainability">
+                            <div class="pa-header">
+                                <span class="pa-icon">🌱</span>
+                                <div class="pa-meta">
+                                    <span class="pa-name">Sustainability</span>
+                                    <span class="pa-tech">Impact analytics engine</span>
+                                </div>
+                                <span class="pa-status" data-status="idle">Idle</span>
+                            </div>
+                            <div class="pa-output" id="pa-output-sustainability"></div>
+                            <div class="pa-progress"><div class="pa-bar" id="pa-bar-sustainability"></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ③ Result -->
+                <div class="demo-col demo-col-result">
+                    <p class="demo-col-label"><span class="demo-step-num">③</span> Your outfit</p>
+                    <div class="result-card" id="demo-result-card">
+                        <div class="result-placeholder" id="result-placeholder">
+                            <span class="result-arrow">👆</span>
+                            <p>Pick a garment to see your AI-styled outfit</p>
+                        </div>
+                        <div class="result-outfit" id="result-outfit" style="display:none;">
+                            <div class="result-pieces" id="result-pieces"></div>
+                            <div class="result-note" id="result-note"></div>
+                            <div class="result-badges" id="result-badges"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline demo-reset-btn" id="demo-reset" style="display:none;">↺ Try another</button>
+                </div>
+
+            </div><!-- /demo-stage -->
+
+            <div class="demo-footnote reveal">
+                <span class="demo-fn-icon">⚡</span>
+                <p>In production, all five agents run <strong>in parallel</strong> inside Complete.dev's shared workspace and complete in <strong>&lt;3 seconds</strong>. They share memory so every analysis improves future results.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features/Benefits -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Features</span>
+                <h2>More than just an app — <span class="gradient-text">an ecosystem</span></h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-item reveal">
+                    <div class="feature-icon">📸</div>
+                    <h3>Zero data entry</h3>
+                    <p>Upload 50 items in 2 minutes. Our vision agent does the rest.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <div class="feature-icon">👗</div>
+                    <h3>Outfit of the day</h3>
+                    <p>Wake up to a curated outfit, ready for your day.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <div class="feature-icon">🛍️</div>
+                    <h3>Shop the gap</h3>
+                    <p>One‑click purchase of missing essentials—with affiliate savings.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <div class="feature-icon">🌱</div>
+                    <h3>Sustainability insights</h3>
+                    <p>Know your wardrobe's carbon footprint and get rotation reminders.</p>
+                </div>
+                <div class="feature-item reveal">
+                    <div class="feature-icon">🔮</div>
+                    <h3>AR try‑on</h3>
+                    <p>Preview outfits on your digital twin before buying (coming soon).</p>
+                </div>
+                <div class="feature-item reveal">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Agent collaboration</h3>
+                    <p>Five agents working together in Complete.dev—smarter than any single AI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Social Proof</span>
+                <h2>Loved by early testers</h2>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card reveal">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"I used to spend 15 minutes every morning deciding what to wear. Now I just open CLOSET.OS and it's done. The agent team is magic."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background:#f43f5e;">S</div>
+                        <div>
+                            <strong>Sarah K.</strong>
+                            <span>Beta tester · NYC</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The Gap Analyst saved me from buying a fifth black dress I didn't need. It suggested a blazer I actually wear constantly."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background:#8b5cf6;">M</div>
+                        <div>
+                            <strong>Michael T.</strong>
+                            <span>Beta tester · London</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Seeing my wardrobe's carbon footprint was eye‑opening. Now I'm more intentional about what I buy and keep."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar" style="background:#10b981;">E</div>
+                        <div>
+                            <strong>Elena R.</strong>
+                            <span>Beta tester · Berlin</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">Pricing</span>
+                <h2>Start loving your wardrobe today</h2>
+                <p>Early bird pricing for the first 10,000 users. Lock in your rate now.</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="card free reveal">
+                    <div class="card-tag">Starter</div>
+                    <h3>Free</h3>
+                    <div class="price">$0</div>
+                    <ul class="features-list">
+                        <li>Up to 50 items</li>
+                        <li>Daily outfit generation</li>
+                        <li>Weather integration</li>
+                        <li>Basic gap analysis</li>
+                    </ul>
+                    <a href="#waitlist" class="btn btn-outline btn-block">Join Waitlist</a>
+                </div>
+                <div class="card premium featured reveal">
+                    <div class="card-tag popular">Most Popular</div>
+                    <h3>Premium</h3>
+                    <div class="price">$4.99 <span>/month</span></div>
+                    <ul class="features-list">
+                        <li>Unlimited items</li>
+                        <li>Calendar sync</li>
+                        <li>Advanced sustainability tracking</li>
+                        <li>AR try‑on (early access)</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="#waitlist" class="btn btn-primary btn-block btn-glow">Get Early Access</a>
+                </div>
+                <div class="card lifetime reveal">
+                    <div class="card-tag">Best Value</div>
+                    <h3>Lifetime</h3>
+                    <div class="price">$49 <span>one-time</span></div>
+                    <ul class="features-list">
+                        <li>All Premium features forever</li>
+                        <li>Exclusive "Founder" badge</li>
+                        <li>Future feature updates</li>
+                    </ul>
+                    <a href="#waitlist" class="btn btn-outline btn-block">Limited spots</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-tag">FAQ</span>
+                <h2>Got questions? <span class="gradient-text">We've got answers.</span></h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>How does the Garment Vision Agent work?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You simply take a photo of any clothing item with your phone. Our Garment Vision Agent uses CLIP + a custom fine-tuned classifier to instantly identify category, color, pattern, fabric type, and style attributes—no manual tagging required. It processes 50 items in under 2 minutes.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>Is my wardrobe data private and secure?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. Your data is encrypted at rest and in transit. We never sell or share your personal wardrobe data with third parties. You can delete your account and all data at any time. Our agents are governed by Complete.dev's privacy and audit tools.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What makes CLOSET.OS different from other wardrobe apps?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Unlike single-feature apps, CLOSET.OS is powered by five collaborative AI agents that share context and memory inside Complete.dev. They work as a team—Garment Vision digitizes your clothes, Stylist creates outfits, Weather & Calendar adds real-world context, Gap Analyst prevents over-shopping, and Sustainability tracks your impact. No other app does all of this together.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>When will CLOSET.OS launch?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We're currently in private beta with 100 testers. The public launch is planned for Week 8 of our roadmap. Join the waitlist to get early access and lock in our early-bird pricing before we go public.</p>
+                    </div>
+                </div>
+                <div class="faq-item reveal">
+                    <button class="faq-question" aria-expanded="false">
+                        <span>What is Complete.dev and why does it matter?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Complete.dev is the first AI workspace where multiple specialized agents collaborate to build and launch products. CLOSET.OS is built entirely on Complete.dev—our agents share memory, context, and outputs in a single workspace, which means they continuously improve and learn from each other. It's our competitive moat.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Waitlist Form -->
+    <section id="waitlist" class="waitlist">
+        <div class="waitlist-bg">
+            <div class="blob w-blob-1"></div>
+            <div class="blob w-blob-2"></div>
+        </div>
+        <div class="container waitlist-container reveal">
+            <span class="section-tag tag-light">Early Access</span>
+            <h2>Be the first to experience CLOSET.OS</h2>
+            <p>Join 12,400+ fashion lovers on the waitlist. We'll notify you when we launch.</p>
+            <form class="waitlist-form" id="waitlist-form" novalidate>
+                <div class="form-wrap">
+                    <input type="email" id="waitlist-email" placeholder="Enter your email address" required autocomplete="email">
+                    <button type="submit" class="btn btn-large btn-white">
+                        <span class="btn-text">Join Waitlist</span>
+                        <span class="btn-spinner" hidden>⟳</span>
+                    </button>
+                </div>
+                <p class="form-error" id="form-error" hidden>Please enter a valid email address.</p>
+            </form>
+            <p class="small">🔒 No spam, ever. Built on <strong>Complete.dev</strong>.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-logo">
+                <span class="logo-text">CLOSET.<span class="os">OS</span></span>
+                <p>The first AI wardrobe operating system.<br>Built entirely on Complete.dev.</p>
+                <div class="footer-social">
+                    <a href="#" aria-label="Twitter">𝕏</a>
+                    <a href="#" aria-label="Instagram">📸</a>
+                    <a href="#" aria-label="TikTok">🎵</a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#how-it-works">How it works</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Cookies</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>© 2026 CLOSET.OS. All rights reserved. Powered by <a href="https://complete.dev" target="_blank" rel="noopener">Complete.dev</a> — where AI agents build products together.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
